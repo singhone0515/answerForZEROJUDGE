@@ -1,0 +1,298 @@
+/* ========== 基礎與版面 ========== */
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+.container,
+.container * {
+  user-select: none;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px 40px;
+  gap: 30px;
+}
+
+/* ========== 通用標題樣式 ========== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0.2em;
+}
+
+h1 {
+  margin: 50px auto 0 auto;
+}
+hr {
+  border: none;
+  border-top: 1px solid #5f5f5f;
+  width: 95%;
+  margin: 20px auto;
+}
+
+.resultblock::-webkit-scrollbar {
+  width: 8px; /* 捲軸寬度 */
+}
+
+.resultblock::-webkit-scrollbar-track {
+  background: transparent; /* 捲軸軌道透明 */
+}
+
+.resultblock::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2); /* 捲軸滑塊透明度 */
+  border-radius: 10px;
+}
+
+.resultblock::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.logdata {
+  font-size: 20px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.resultblock {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 600px;
+  width: 1000px;
+  padding: 20px;
+  padding-top: 1px;
+  background-color: rgb(213, 242, 255);
+  border-radius: 30px;
+  border: 3px solid white;
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.2),
+    inset 0 0 8px rgba(0, 0, 0, 0.6);
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.resultTable {
+  border-collapse: separate;
+  border-spacing: 0 4px;
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  table-layout: fixed;
+}
+
+.resultTable th {
+  position: sticky;
+  top: 0;
+  background-color: #ffffe4;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  height: 15px;
+  border: 1px solid #999;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.resultTable td {
+  height: 15px;
+  border: 1px solid #999;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  text-align: center;
+}
+
+.resultTable tr .content {
+  transform-origin: center;
+  transition: 0.05s ease;
+}
+
+.resultTable tr.content:hover,
+.resultTable tr.content:hover td {
+  background-color: #fffff8;
+  box-shadow: 0 0px 4px rgba(0, 0, 0, 0.2);
+  transform: scale(1.005);
+}
+
+.resultTable th:nth-child(1),
+.resultTable td:nth-child(1) {
+  width: 50px;
+}
+
+.resultTable th:nth-child(2),
+.resultTable td:nth-child(2) {
+  width: 300px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.resultTable th:nth-child(3),
+.resultTable td:nth-child(3) {
+  width: 40px;
+}
+
+.resultTable th:nth-child(4),
+.resultTable td:nth-child(4) {
+  width: 450px;
+}
+
+.resultTable th:nth-child(5),
+.resultTable td:nth-child(5),
+.resultTable th:nth-child(6),
+.resultTable td:nth-child(6) {
+  width: 50px;
+}
+
+.close {
+  margin: 40px auto;
+  height: 40px;
+  width: 200px;
+  border-radius: 10px;
+  transform-origin: center;
+  transition: 0.15s ease;
+  cursor: pointer;
+}
+
+.problem-solution-Btn {
+  height: 25px;
+  border-radius: 10px;
+  transform-origin: center;
+  transition: 0.15s ease;
+  cursor: pointer;
+}
+
+.close:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+.problem-solution-Btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+#alert-window {
+  width: 400px;
+  height: 250px;
+  border: none;
+  border-radius: 30px;
+  box-shadow: 0 10px 10px rgba(0, 0, 0, 0.25);
+
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.alert-window-content {
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  width: 350px;
+  height: 200px;
+  overflow-y: hidden;
+}
+
+.alert-window-btn {
+  display: flex;
+  gap: 20px;
+}
+
+dialog[open] {
+  animation: popup-in 0.4s ease;
+}
+
+dialog.closing {
+  animation: popup-out 0.2s ease;
+}
+
+dialog[open]::backdrop {
+  animation: backdrop-fade-in 0.4s ease forwards;
+}
+
+dialog.closing::backdrop {
+  animation: backdrop-fade-out 0.2s ease forwards;
+}
+
+.alert-window-btn button {
+  height: 40px;
+  padding: 4px 12px;
+  border-radius: 10px;
+  transform-origin: center;
+  transition: 0.15s ease;
+  cursor: pointer;
+}
+
+.alert-window-btn button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes popup-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes popup-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes backdrop-fade-in {
+  0% {
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+}
+
+@keyframes backdrop-fade-out {
+  0% {
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+  }
+  100% {
+    background: rgba(0, 0, 0, 0);
+    backdrop-filter: blur(0px);
+  }
+}

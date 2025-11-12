@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>查詢結果</title>
+    <link rel="stylesheet" href="result.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>搜尋結果</h1>
+      <div class="resultblock">
+        <p class="logdata">資料載入中......</p>
+      </div>
+      <button class="close">關閉視窗</button>
+    </div>
+
+    <dialog id="alert-window">
+      <h2>警告訊息</h2>
+      <hr style="margin: 0 auto; border-color: rgb(160, 160, 160)" />
+      <div class="alert-window-content"></div>
+
+      <div class="alert-window-btn">
+        <button class="cencel">取消</button>
+        <button onclick="window.close()">確定</button>
+      </div>
+    </dialog>
+
+    <script src="result.js"></script>
+  </body>
+</html>

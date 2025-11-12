@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>題目題型及題解查詢系統</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header-card">
+        <h1>題目題型及題解查詢系統</h1>
+        <p>
+          題目來源：<a href="https://zerojudge.tw" target="_blank">Zerojudge</a>
+        </p>
+      </div>
+
+      <div class="search-card">
+        <h2>題目搜尋</h2>
+
+        <div class="search-output">
+          <div id="tagContainer" class="tags"></div>
+          <button id="all-search-btn">全選</button>
+          <button id="go-to-search" disabled>搜尋</button>
+        </div>
+        <hr />
+
+        <div class="search-form">
+          <div class="form-row-id">
+            <label>題目編號：</label>
+            <input type="text" placeholder="輸入題目編號" />
+          </div>
+
+          <div class="form-row-name">
+            <label>題目名稱：</label>
+            <input type="text" placeholder="輸入題目名稱" />
+          </div>
+
+          <div class="form-row-star">
+            <label>題目難度：</label>
+            <div class="star-selector">
+              <span data-value="10">A</span>
+              <span data-value="9">9</span>
+              <span data-value="8">8</span>
+              <span data-value="7">7</span>
+              <span data-value="6">6</span>
+              <span data-value="5">5</span>
+              <span data-value="4">4</span>
+              <span data-value="3">3</span>
+              <span data-value="2">2</span>
+              <span data-value="1">1</span>
+              <span data-value="0">0</span>
+            </div>
+          </div>
+
+          <div class="form-row-type">
+            <label>題目類型：</label>
+            <button id="select-display">選擇題目類型</button>
+            <span id="type-status">未選擇題型</span>
+          </div>
+        </div>
+
+        <div class="action-buttons">
+          <button id="clear-search-btn" disabled>清除</button>
+          <button id="addTag" disabled>加入</button>
+        </div>
+      </div>
+
+      <dialog id="type-window">
+        <h2>題目類型</h2>
+        <div class="type-window-content"></div>
+
+        <div class="type-window-btn">
+          <button id="typeclear" disabled>清除</button>
+          <button id="typecencel">取消</button>
+          <button id="typecheck">確定</button>
+        </div>
+      </dialog>
+
+      <dialog id="alert-window">
+        <h2>錯誤訊息</h2>
+        <hr style="margin: 0 auto; border-color: rgb(160, 160, 160)" />
+        <div class="alert-window-content"></div>
+
+        <div class="alert-window-btn">
+          <button id="typecheck">關閉</button>
+        </div>
+      </dialog>
+    </div>
+
+    <div class="footer">
+      <p>
+        若對題目屬性或題解有疑問，歡迎私訊討論！<br />
+        聯繫方式： ⓵ DC：hugo.___o&nbsp; ⓶ Zerojudge：singhone0515
+      </p>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
