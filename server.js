@@ -119,7 +119,14 @@ app.post("/api/search", (req, res) => {
         }
 
         if (item.id !== "") {
-          if (data.id !== item.id) flag = 0;
+          const dataLetter = data.id[0].toLowerCase(); // 第一個字母（忽略大小寫）
+          const dataNumber = Number(data.id.slice(1)); // 後面的數字
+          const itemLetter = item.id[0].toLowerCase();
+          const itemNumber = Number(item.id.slice(1));
+
+          if (dataLetter !== itemLetter || dataNumber !== itemNumber) {
+            flag = 0;
+          }
         }
 
         if (item.name !== "") {
