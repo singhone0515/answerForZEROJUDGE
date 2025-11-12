@@ -136,3 +136,13 @@ code::-webkit-scrollbar-thumb:hover {
   margin: 0;
   text-align: center;
 }
+
+.logdata {
+  font-size: 20px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
