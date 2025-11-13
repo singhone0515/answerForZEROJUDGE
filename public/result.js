@@ -76,7 +76,7 @@ function printResult(Result) {
 
   const tag = document.querySelector(".resultTable");
   
-  Object.values(Result).forEach((item) => {
+  Result.forEach((item) => {
     const tr = document.createElement("tr");
     tr.classList.add("content");
     let text = `
