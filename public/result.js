@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let savedResult = JSON.parse(localStorage.getItem("searchResult"));
   if (savedResult) {
     setTimeout(() => {
-      printResult(Object.values(savedResult));
+      printResult(savedResult);
     }, 150);
   }
 });
