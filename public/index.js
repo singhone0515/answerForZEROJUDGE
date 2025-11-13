@@ -159,7 +159,7 @@ selectAll.addEventListener("click", () => {
 
   data.push(onedata);
   newWin.onload = () => {
-    newWin.postMessage(data, "*");
+    newWin.postMessage(JSON.stringify(data), "*");
   };
 });
 

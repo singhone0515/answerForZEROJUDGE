@@ -34,7 +34,7 @@ async function sendToServer(datatosearch) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(datatosearch),
+    body: datatosearch,
   });
   result = await res.json();
   localStorage.setItem("searchResult", JSON.stringify(result));
