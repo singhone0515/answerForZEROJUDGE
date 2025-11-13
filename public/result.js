@@ -12,9 +12,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("message", async (event) => {
   datatosearch = event.data;
+  console.log(typeof datatosearch);
   await sendToServer(datatosearch);
   
-//  sortResult();
+  result=Object.values(result);
+  sortResult();
 
   console.log("搜尋結果：", result);
 
@@ -29,7 +31,7 @@ async function sendToServer(datatosearch) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: datatosearch,
+    body: JSON.stringify(datatosearch),
   });
   result = await res.json();
   localStorage.setItem("searchResult", JSON.stringify(result));
