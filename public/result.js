@@ -11,6 +11,10 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("message", async (event) => {
+  if (window._messageHandled) return;
+  window._messageHandled = true;
+
+
   datatosearch = event.data;
   console.log(typeof datatosearch);
   await sendToServer(datatosearch);
