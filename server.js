@@ -98,7 +98,7 @@ app.get("/api/categories", async (req, res) => {
 app.post("/api/search", (req, res) => {
   try {
     let results = [];
-    let searchRules = Json.parse(req.body);
+    let searchRules = req.body;
 
     searchRules.forEach((item) => {
       collectionProb.forEach((doc) => {
@@ -137,7 +137,7 @@ app.post("/api/search", (req, res) => {
           if (data.difficulty !== item.difficulty) flag = 0;
         }
 
-        const itemcate = JSON.parse(item.category);
+        const itemcate = JSON.parse(item.categories);
         if (itemcate.length !== 0) {
           if (!itemcate.every((c) => data.category.includes(c))) flag = 0;
         }
