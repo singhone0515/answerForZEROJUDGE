@@ -15,7 +15,7 @@ window.addEventListener("message", async (event) => {
   window._messageHandled = true;
 
 
-  datatosearch = JSON.parse(event.data);
+  datatosearch = event.data;
   console.log(typeof datatosearch);
   await sendToServer(datatosearch);
   
