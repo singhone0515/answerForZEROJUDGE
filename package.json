@@ -12,7 +12,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^5.1.0",
-    "firebase-admin": "^13.6.0"
+    "firebase-admin": "^13.6.0",
+    "react-syntax-highlighter": "^16.1.0"
   },
   "devDependencies": {
     "dotenv": "^17.2.3",
