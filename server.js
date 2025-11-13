@@ -91,7 +91,7 @@ app.get("/api/categories", async (req, res) => {
     res.json(categories);
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: "Server error" });
+    res.status(400).json({ error: "Server error" });
   }
 });
 
@@ -177,7 +177,7 @@ app.post("/api/detail", (req, res) => {
     res.json(detail);
   } catch (err) {
     console.log(err);
-    res.status(500).json({ error: "detail search error" });
+    res.status(600).json({ error: "detail search error" });
   }
 });
 
