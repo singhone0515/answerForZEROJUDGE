@@ -98,7 +98,7 @@ app.get("/api/categories", async (req, res) => {
 app.post("/api/search", (req, res) => {
   try {
     let results = [];
-    let searchRules = JSON.prase(req.body);
+    let searchRules = JSON.parse(req.body);
 
     searchRules.forEach((item) => {
       collectionProb.forEach((doc) => {
