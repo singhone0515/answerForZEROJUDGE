@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("message", async (event) => {
-  datatosearch = Object.values(event.data);
+  datatosearch = event.data;
   await sendToServer(datatosearch);
   
   sortResult();
@@ -31,7 +31,7 @@ async function sendToServer(datatosearch) {
     },
     body: JSON.stringify(datatosearch),
   });
-  result = Object.values(await res.json());
+  result = await res.json();
   localStorage.setItem("searchResult", JSON.stringify(result));
 
 }
@@ -75,7 +75,7 @@ function printResult(Result) {
 
   const tag = document.querySelector(".resultTable");
   
-  Object.values(Result).forEach((item) => {
+  Result.forEach((item) => {
     const tr = document.createElement("tr");
     tr.classList.add("content");
     let text = `
