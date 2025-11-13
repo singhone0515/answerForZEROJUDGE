@@ -158,9 +158,9 @@ selectAll.addEventListener("click", () => {
   };
 
   data.push(onedata);
-  newWin.onload = () => {
+  newWin.addEventListener("load", () => {
     newWin.postMessage(data, "*");
-  };
+  });
 });
 
 tagContainer.addEventListener("click", (e) => {
