@@ -11,7 +11,7 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 window.addEventListener("message", async (event) => {
-  datatosearch = event.data;
+  datatosearch = Object.values(event.data);
   await sendToServer(datatosearch);
   result = Object.values(result);
   sortResult(result);
