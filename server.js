@@ -57,7 +57,7 @@ setInterval(
     await loadData();
     console.log("✅ Firestore 資料已更新");
   },
-  6 * 60 * 60 * 1000,
+  2 * 60 * 60 * 1000,
 );
 
 app.get("/api/categories", async (req, res) => {
@@ -119,8 +119,8 @@ app.post("/api/search", (req, res) => {
         }
 
         if (item.id !== "") {
-          const dataLetter = data.id[0].toLowerCase(); // 第一個字母（忽略大小寫）
-          const dataNumber = Number(data.id.slice(1)); // 後面的數字
+          const dataLetter = data.id[0].toLowerCase();
+          const dataNumber = Number(data.id.slice(1));
           const itemLetter = item.id[0].toLowerCase();
           const itemNumber = Number(item.id.slice(1));
 
@@ -181,7 +181,6 @@ app.post("/api/detail", (req, res) => {
   }
 });
 
-// export default app;
 
 app.listen(3000, () => {
   console.log("✅ Server running at http://localhost:3000");
