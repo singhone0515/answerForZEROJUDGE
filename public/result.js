@@ -12,10 +12,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
 window.addEventListener("message", async (event) => {
   datatosearch = event.data;
-
+  console.log(typeof datatosearch);
   await sendToServer(datatosearch);
 
   sortResult(result);
+
   console.log("搜尋結果：", result);
 
   setTimeout(() => {
