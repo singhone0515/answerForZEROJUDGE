@@ -14,7 +14,7 @@ window.addEventListener("message", async (event) => {
   datatosearch = event.data;
   await sendToServer(datatosearch);
   
-  sortResult();
+//  sortResult();
 
   console.log("搜尋結果：", result);
 
@@ -29,28 +29,28 @@ async function sendToServer(datatosearch) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(datatosearch),
+    body: datatosearch,
   });
   result = await res.json();
   localStorage.setItem("searchResult", JSON.stringify(result));
 
 }
 
-function sortResult() {
-  result.sort((a, b) => {
-    const letterA = a.id[0];
-    const letterB = b.id[0];
+// function sortResult() {
+//   result.sort((a, b) => {
+//     const letterA = a.id[0];
+//     const letterB = b.id[0];
 
-    if (letterA !== letterB) {
-      return letterA.localeCompare(letterB); // 先照字母排
-    }
+//     if (letterA !== letterB) {
+//       return letterA.localeCompare(letterB); // 先照字母排
+//     }
 
-    // 字母相同 → 排數字
-    const numA = Number(a.id.slice(1));
-    const numB = Number(b.id.slice(1));
-    return numA - numB;
-  });
-}
+//     // 字母相同 → 排數字
+//     const numA = Number(a.id.slice(1));
+//     const numB = Number(b.id.slice(1));
+//     return numA - numB;
+//   });
+// }
 
 function printResult(Result) {
   const tags = document.querySelector(".resultblock");
