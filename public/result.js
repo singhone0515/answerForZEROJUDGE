@@ -13,8 +13,8 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("message", async (event) => {
   datatosearch = event.data;
   await sendToServer(datatosearch);
-
-  sortResult(Object.values(result));
+  result = Object.values(result);
+  sortResult(result);
 
   console.log("搜尋結果：", result);
 
