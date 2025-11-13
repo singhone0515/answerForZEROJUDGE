@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", () => {
   let savedResult = JSON.parse(localStorage.getItem("searchResult"));
   if (savedResult) {
     setTimeout(() => {
-      printResult(savedResult);
+      printResult(Object.values(savedResult));
     }, 150);
   }
 });
@@ -13,8 +13,8 @@ window.addEventListener("DOMContentLoaded", () => {
 window.addEventListener("message", async (event) => {
   datatosearch = Object.values(event.data);
   await sendToServer(datatosearch);
-  result = Object.values(result);
-  sortResult(result);
+  
+  sortResult();
 
   console.log("搜尋結果：", result);
 
@@ -31,11 +31,12 @@ async function sendToServer(datatosearch) {
     },
     body: JSON.stringify(datatosearch),
   });
-  result = await res.json();
+  result = Object.values(await res.json());
   localStorage.setItem("searchResult", JSON.stringify(result));
+
 }
 
-function sortResult(result) {
+function sortResult() {
   result.sort((a, b) => {
     const letterA = a.id[0];
     const letterB = b.id[0];
@@ -51,15 +52,14 @@ function sortResult(result) {
   });
 }
 
-function printResult(result) {
+function printResult(Result) {
   const tags = document.querySelector(".resultblock");
 
-  if (result.length === 0) {
+  if (Result.length === 0) {
     const text = document.querySelector(".resultblock .logdata");
     text.textContent = "查無符合資料";
     return;
   }
-
   tags.innerHTML = `
         <table class="resultTable">
             <tr>
@@ -74,8 +74,8 @@ function printResult(result) {
     `;
 
   const tag = document.querySelector(".resultTable");
-
-  result.forEach((item) => {
+  
+  Object.values(Result).forEach((item) => {
     const tr = document.createElement("tr");
     tr.classList.add("content");
     let text = `
