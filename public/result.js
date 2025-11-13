@@ -15,7 +15,7 @@ window.addEventListener("message", async (event) => {
   window._messageHandled = true;
 
 
-  datatosearch = event.data;
+  datatosearch = JSON.parse(event.data);
   console.log(typeof datatosearch);
   await sendToServer(datatosearch);
   
@@ -34,7 +34,7 @@ async function sendToServer(datatosearch) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: datatosearch,
+    body: JSON.stringify(datatosearch),
   });
   result = await res.json();
   localStorage.setItem("searchResult", JSON.stringify(result));
