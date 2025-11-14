@@ -59,7 +59,7 @@ async function sendToServer(datatosearch) {
 function printResult(Result) {
   const tags = document.querySelector(".resultblock");
 
-  if (Result.length === 0) {
+  if (result.length === 0) {
     const text = document.querySelector(".resultblock .logdata");
     text.textContent = "查無符合資料";
     return;
@@ -79,7 +79,7 @@ function printResult(Result) {
 
   const tag = document.querySelector(".resultTable");
   
-  Result.forEach((item) => {
+  result.forEach((item) => {
     const tr = document.createElement("tr");
     tr.classList.add("content");
     let text = `
