@@ -2,7 +2,7 @@ let datatosearch = null;
 let result = null;
 
 window.addEventListener("DOMContentLoaded", () => {
-  let savedResult = JSON.parse(localStorage.getItem("searchResult"));
+  let savedResult = localStorage.getItem("searchResult");
   console.log(Array.isArray(savedResult));
   if (savedResult) {
     setTimeout(() => {
