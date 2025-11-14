@@ -98,7 +98,7 @@ app.get("/api/categories", async (req, res) => {
 app.post("/api/search", (req, res) => {
   try {
     let results = [];
-    let searchRules = JSON.parse(req.body);
+    let searchRules = req.body;
 
     searchRules.forEach((item) => {
       collectionProb.forEach((doc) => {
@@ -111,7 +111,7 @@ app.post("/api/search", (req, res) => {
               id: data.id,
               name: data.title,
               difficulty: data.difficulty,
-              category: JSON.stringify(data.category),
+              category: data.category,
             });
 
             return;
@@ -137,14 +137,14 @@ app.post("/api/search", (req, res) => {
           if (data.difficulty !== item.difficulty) flag = 0;
         }
 
-        const itemcate = JSON.parse(item.categories);
+        const itemcate = JSON.parse(item.category);
         if (itemcate.length !== 0) {
           if (!itemcate.every((c) => data.category.includes(c))) flag = 0;
         }
 
         if (flag) {
           const exists = results.some((item) => item.id === data.id);
-
+          console.log(Array.isArray(data.category));
           if (!exists) {
             results.push({
               id: data.id,

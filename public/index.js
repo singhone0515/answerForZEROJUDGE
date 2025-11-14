@@ -154,7 +154,7 @@ selectAll.addEventListener("click", () => {
     id: "ALL",
     name: "",
     difficulty: -1,
-    categories: "[]",
+    category: "[]",
   };
 
   data.push(onedata);
