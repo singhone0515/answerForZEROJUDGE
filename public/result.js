@@ -38,6 +38,7 @@ async function sendToServer(datatosearch) {
     body: JSON.stringify(datatosearch),
   });
   result = await res.json();
+
   localStorage.setItem("searchResult", result);
 }
 

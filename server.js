@@ -156,7 +156,7 @@ app.post("/api/search", (req, res) => {
         }
       });
     });
-
+    console.log(results);
     res.send(JSON.stringify(results));
   } catch (err) {
     console.log(err);
