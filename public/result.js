@@ -3,7 +3,6 @@ let result = null;
 
 window.addEventListener("DOMContentLoaded", () => {
   
-  console.log(localStorage.getItem("searchResult"));
   let savedResult = JSON.parse(localStorage.getItem("searchResult"));
   console.log(Array.isArray(savedResult));
   if (savedResult) {
@@ -39,7 +38,7 @@ async function sendToServer(datatosearch) {
   });
   result = await res.json();
 
-  localStorage.setItem("searchResult", result);
+  localStorage.setItem("searchResult", Json.stringify(result));
 }
 
 // function sortResult() {

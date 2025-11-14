@@ -157,7 +157,7 @@ app.post("/api/search", (req, res) => {
       });
     });
     console.log(results);
-    res.send(JSON.stringify(results));
+    res.json(results);
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "search error" });
