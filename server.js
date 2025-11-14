@@ -100,62 +100,62 @@ app.post("/api/search", (req, res) => {
     let results = [];
     let searchRules = req.body;
 
-    // searchRules.forEach((item) => {
-    //   collectionProb.forEach((doc) => {
-    //     const data = doc.data();
-    //     let flag = 1;
+    searchRules.forEach((item) => {
+      collectionProb.forEach((doc) => {
+        const data = doc.data();
+        let flag = 1;
 
-    //     if (item.id !== "") {
-    //       if (item.id === "ALL") {
-    //         results.push({
-    //           id: data.id,
-    //           name: data.title,
-    //           difficulty: data.difficulty,
-    //           category: data.category,
-    //         });
+        if (item.id !== "") {
+          if (item.id === "ALL") {
+            results.push({
+              id: data.id,
+              name: data.title,
+              difficulty: data.difficulty,
+              category: data.category,
+            });
 
-    //         return;
-    //       }
-    //     }
+            return;
+          }
+        }
 
-    //     if (item.id !== "") {
-    //       const dataLetter = data.id[0].toLowerCase();
-    //       const dataNumber = Number(data.id.slice(1));
-    //       const itemLetter = item.id[0].toLowerCase();
-    //       const itemNumber = Number(item.id.slice(1));
+        if (item.id !== "") {
+          const dataLetter = data.id[0].toLowerCase();
+          const dataNumber = Number(data.id.slice(1));
+          const itemLetter = item.id[0].toLowerCase();
+          const itemNumber = Number(item.id.slice(1));
 
-    //       if (dataLetter !== itemLetter || dataNumber !== itemNumber) {
-    //         flag = 0;
-    //       }
-    //     }
+          if (dataLetter !== itemLetter || dataNumber !== itemNumber) {
+            flag = 0;
+          }
+        }
 
-    //     if (item.name !== "") {
-    //       if (!data.title.includes(item.name)) flag = 0;
-    //     }
+        if (item.name !== "") {
+          if (!data.title.includes(item.name)) flag = 0;
+        }
 
-    //     if (item.difficulty !== -1) {
-    //       if (data.difficulty !== item.difficulty) flag = 0;
-    //     }
+        if (item.difficulty !== -1) {
+          if (data.difficulty !== item.difficulty) flag = 0;
+        }
 
-    //     const itemcate = JSON.parse(item.category);
-    //     if (itemcate.length !== 0) {
-    //       if (!itemcate.every((c) => data.category.includes(c))) flag = 0;
-    //     }
+        const itemcate = JSON.parse(item.category);
+        if (itemcate.length !== 0) {
+          if (!itemcate.every((c) => data.category.includes(c))) flag = 0;
+        }
 
-    //     if (flag) {
-    //       const exists = results.some((item) => item.id === data.id);
-    //       console.log(Array.isArray(data.category));
-    //       if (!exists) {
-    //         results.push({
-    //           id: data.id,
-    //           name: data.title,
-    //           difficulty: data.difficulty,
-    //           category: JSON.stringify(data.category),
-    //         });
-    //       }
-    //     }
-    //   });
-    // });
+        if (flag) {
+          const exists = results.some((item) => item.id === data.id);
+          console.log(Array.isArray(data.category));
+          if (!exists) {
+            results.push({
+              id: data.id,
+              name: data.title,
+              difficulty: data.difficulty,
+              category: JSON.stringify(data.category),
+            });
+          }
+        }
+      });
+    });
 
     res.json(results);
   } catch (err) {
