@@ -1,5 +1,5 @@
 let datatosearch = null;
-let result = null;
+let result = '[]';
 
 window.addEventListener("DOMContentLoaded", () => {
   let savedResult = JSON.parse(localStorage.getItem("searchResult"));
