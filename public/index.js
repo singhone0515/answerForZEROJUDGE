@@ -327,7 +327,7 @@ search.addEventListener("click", () => {
   let data = [];
   const searchItem = document.querySelectorAll("#tagContainer .tag");
 
-  localStorage.setItem("searchResult", 0);
+  localStorage.removeItem("searchResult");
 
   searchItem.forEach((item) => {
     data.push({
