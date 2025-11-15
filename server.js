@@ -83,7 +83,6 @@ app.get("/api/categories", async (req, res) => {
 });
 
 app.post("/api/search", (req, res) => {
-  console.log("BODY = ", req.body);
   try {
     let results = [];
     let searchRules = req.body;
@@ -124,12 +123,12 @@ app.post("/api/search", (req, res) => {
         if (item.difficulty !== -1) {
           if (data.difficulty !== item.difficulty) flag = 0;
         }
-/*
+
         const itemcate = JSON.parse(item.category);
         if (itemcate.length !== 0) {
           if (!itemcate.every((c) => data.category.includes(c))) flag = 0;
         }
-*/
+
         if (flag) {
           const exists = results.some((item) => item.id === data.id);
           if (!exists) {

@@ -16,6 +16,7 @@ window.addEventListener("message", async (event) => {
   window._messageHandled = true;
 
   datatosearch = event.data;
+  console.log(Array.isArray(datatosearch),"fata");
   await sendToServer(datatosearch);
   
   sortResult();
@@ -33,7 +34,7 @@ async function sendToServer(datatosearch) {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(datatosearch),
+    body: datatosearch,
   });
   result = await res.json();
 
@@ -85,7 +86,7 @@ function printResult(Result) {
             <td>${item.id}</td>
             <td>${item.name}</td>
             <td>${item.difficulty}</td>
-            <td>${item.category}</td>
+            <td>${item.category.join(" + ")}</td>
             <td><button class="problemsBtn problem-solution-Btn" data-id="${item.id}">點我</button></td>
             <td><button class="detailBtn problem-solution-Btn" data-id="${item.id}">點我</button></td>
         `;

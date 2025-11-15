@@ -339,7 +339,7 @@ search.addEventListener("click", () => {
   });
 
   newWin.onload = () => {
-    newWin.postMessage(data, "*");
+    newWin.postMessage(JSON.stringify(data), "*");
   };
 });
 
