@@ -1,11 +1,9 @@
-# === Private files ===
 firebaseKey.json
 solution_for_problems/
+nonFallAsleep/
 
-# === Node modules ===
 node_modules/
 
-# === Editor / System files ===
 .vscode/
 .DS_Store
 Thumbs.db
