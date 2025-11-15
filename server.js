@@ -44,7 +44,7 @@ setInterval(
     await loadData();
     console.log("✅ Firestore 資料已更新");
   },
-  2 * 60 * 60 * 1000,
+  60 * 60 * 1000,
 );
 
 app.get("/api/categories", async (req, res) => {
