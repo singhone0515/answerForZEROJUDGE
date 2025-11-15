@@ -144,7 +144,6 @@ app.post("/api/result", (req, res) => {
 
         if (flag) {
           const exists = results.some((item) => item.id === data.id);
-          console.log(Array.isArray(data.category));
           if (!exists) {
             results.push({
               id: data.id,

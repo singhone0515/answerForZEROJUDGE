@@ -58,7 +58,6 @@ async function sendToServer(datatosearch) {
 
 function printResult(result) {
   const tags = document.querySelector(".resultblock");
-  console.log(Array.isArray(result));
   if (result.length === 0) {
     const text = document.querySelector(".resultblock .logdata");
     text.textContent = "查無符合資料";
