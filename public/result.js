@@ -3,6 +3,7 @@ let result = '[]';
 
 window.addEventListener("DOMContentLoaded", () => {
   let savedResult = JSON.parse(localStorage.getItem("searchResult"));
+  console.log("共 ", savedResult.length ," 筆");
 
   if (savedResult!==null) {
     setTimeout(() => {
@@ -21,6 +22,7 @@ window.addEventListener("message", async (event) => {
   sortResult();
 
   console.log("搜尋結果：", result);
+  console.log("共 ", result.length ," 筆");
 
   setTimeout(() => {
     printResult(result);
