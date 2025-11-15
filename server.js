@@ -124,12 +124,12 @@ app.post("/api/search", (req, res) => {
         if (item.difficulty !== -1) {
           if (data.difficulty !== item.difficulty) flag = 0;
         }
-
+/*
         const itemcate = JSON.parse(item.category);
         if (itemcate.length !== 0) {
           if (!itemcate.every((c) => data.category.includes(c))) flag = 0;
         }
-
+*/
         if (flag) {
           const exists = results.some((item) => item.id === data.id);
           if (!exists) {
@@ -137,7 +137,7 @@ app.post("/api/search", (req, res) => {
               id: data.id,
               name: data.title,
               difficulty: data.difficulty,
-              category: JSON.stringify(data.category),
+              category: data.category,
             });
           }
         }

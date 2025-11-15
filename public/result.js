@@ -18,7 +18,7 @@ window.addEventListener("message", async (event) => {
   datatosearch = event.data;
   await sendToServer(datatosearch);
   
-  // sortResult();
+  sortResult();
 
   console.log("搜尋結果：", result);
 
@@ -40,21 +40,21 @@ async function sendToServer(datatosearch) {
   localStorage.setItem("searchResult", JSON.stringify(result));
 }
 
-// function sortResult() {
-//   result.sort((a, b) => {
-//     const letterA = a.id[0];
-//     const letterB = b.id[0];
+function sortResult() {
+  result.sort((a, b) => {
+    const letterA = a.id[0];
+    const letterB = b.id[0];
 
-//     if (letterA !== letterB) {
-//       return letterA.localeCompare(letterB); // 先照字母排
-//     }
+    if (letterA !== letterB) {
+      return letterA.localeCompare(letterB); // 先照字母排
+    }
 
-//     // 字母相同 → 排數字
-//     const numA = Number(a.id.slice(1));
-//     const numB = Number(b.id.slice(1));
-//     return numA - numB;
-//   });
-// }
+    // 字母相同 → 排數字
+    const numA = Number(a.id.slice(1));
+    const numB = Number(b.id.slice(1));
+    return numA - numB;
+  });
+}
 
 function printResult(Result) {
   const tags = document.querySelector(".resultblock");
@@ -85,7 +85,7 @@ function printResult(Result) {
             <td>${item.id}</td>
             <td>${item.name}</td>
             <td>${item.difficulty}</td>
-            <td>${JSON.parse(item.category).join(" + ")}</td>
+            <td>${item.category}</td>
             <td><button class="problemsBtn problem-solution-Btn" data-id="${item.id}">點我</button></td>
             <td><button class="detailBtn problem-solution-Btn" data-id="${item.id}">點我</button></td>
         `;
