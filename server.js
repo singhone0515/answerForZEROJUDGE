@@ -83,6 +83,7 @@ app.get("/api/categories", async (req, res) => {
 });
 
 app.post("/api/search", (req, res) => {
+  console.log("BODY = ", req.body);
   try {
     let results = [];
     let searchRules = req.body;
