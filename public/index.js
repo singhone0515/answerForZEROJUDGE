@@ -149,6 +149,8 @@ const selectAll = document.getElementById("all-search-btn");
 selectAll.addEventListener("click", () => {
   const newWin = window.open("result.html", "_blank");
 
+  localStorage.removeItem("searchResult");
+
   let data = [];
   const onedata = {
     id: "ALL",
@@ -156,9 +158,7 @@ selectAll.addEventListener("click", () => {
     difficulty: -1,
     category: "[]",
   };
-  
-  localStorage.removeItem("searchResult");
-  
+
   data.push(onedata);
   newWin.onload = () => {
     newWin.postMessage(JSON.stringify(data), "*");
