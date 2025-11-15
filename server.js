@@ -95,7 +95,7 @@ app.get("/api/categories", async (req, res) => {
   }
 });
 
-app.post("/api/search", (req, res) => {
+app.post("/api/result", (req, res) => {
   try {
     let results = [];
     let searchRules = req.body;

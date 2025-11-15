@@ -28,7 +28,7 @@ window.addEventListener("message", async (event) => {
 });
 
 async function sendToServer(datatosearch) {
-  const res = await fetch("/api/search", {
+  const res = await fetch("/api/result", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
