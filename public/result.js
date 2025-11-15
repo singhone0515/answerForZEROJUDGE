@@ -16,7 +16,6 @@ window.addEventListener("message", async (event) => {
   window._messageHandled = true;
 
   datatosearch = event.data;
-  console.log(Array.isArray(datatosearch),"fata");
   await sendToServer(datatosearch);
   
   sortResult();
