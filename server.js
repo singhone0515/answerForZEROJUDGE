@@ -28,17 +28,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "/public/index.html"));
-});
-
-app.get("/api-data", (req, res) => {
-  res.json({
-    message: "Here is some sample API data",
-    items: ["apple", "banana", "cherry"],
-  });
-});
-
 let collectionType = null;
 let collectionProb = null;
 
@@ -177,7 +166,9 @@ app.post("/api/detail", (req, res) => {
   }
 });
 
+app.use(express.static(path.join(__dirname, "/public")));
 
+// 首頁 index.html
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
