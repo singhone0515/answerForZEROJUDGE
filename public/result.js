@@ -28,7 +28,7 @@ window.addEventListener("message", async (event) => {
 });
 
 async function sendToServer(datatosearch) {
-  const res = await fetch("/api/result", {
+  const res = await fetch("/api/search", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -56,9 +56,9 @@ async function sendToServer(datatosearch) {
 //   });
 // }
 
-function printResult(result) {
+function printResult(Result) {
   const tags = document.querySelector(".resultblock");
-  if (result.length === 0) {
+  if (Result.length === 0) {
     const text = document.querySelector(".resultblock .logdata");
     text.textContent = "查無符合資料";
     return;
@@ -78,7 +78,7 @@ function printResult(result) {
 
   const tag = document.querySelector(".resultTable");
   
-  result.forEach((item) => {
+  Result.forEach((item) => {
     const tr = document.createElement("tr");
     tr.classList.add("content");
     let text = `

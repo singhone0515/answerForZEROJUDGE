@@ -28,8 +28,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use(express.static(path.join(__dirname, "/public")));
-
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/public/index.html"));
 });
@@ -95,7 +93,7 @@ app.get("/api/categories", async (req, res) => {
   }
 });
 
-app.post("/api/result", (req, res) => {
+app.post("/api/search", (req, res) => {
   try {
     let results = [];
     let searchRules = req.body;
@@ -179,6 +177,10 @@ app.post("/api/detail", (req, res) => {
   }
 });
 
+
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "/public/index.html"));
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
