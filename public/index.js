@@ -156,7 +156,9 @@ selectAll.addEventListener("click", () => {
     difficulty: -1,
     category: "[]",
   };
-
+  
+  localStorage.removeItem("searchResult");
+  
   data.push(onedata);
   newWin.onload = () => {
     newWin.postMessage(JSON.stringify(data), "*");
