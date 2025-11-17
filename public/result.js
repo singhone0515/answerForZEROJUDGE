@@ -2,14 +2,15 @@ let datatosearch = null;
 let result = '[]';
 
 window.addEventListener("DOMContentLoaded", () => {
-  let savedResult = JSON.parse(localStorage.getItem("searchResult"));
-  console.log("共 ", savedResult.length ," 筆");
+  const savedResult = JSON.parse(localStorage.getItem("searchResult"));
 
-  if (savedResult!==null) {
-    setTimeout(() => {
-      printResult(savedResult);
-    }, 150);
-  }
+  if (savedResult===null) return;
+
+  console.log("共 ", savedResult.length ," 筆");
+  
+  setTimeout(() => {
+    printResult(savedResult);
+  }, 150);
 });
 
 window.addEventListener("message", async (event) => {
