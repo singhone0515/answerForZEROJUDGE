@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", () => {
   
   setTimeout(() => {
     printResult(savedResult);
-  }, 150);
+  }, 50);
 });
 
 window.addEventListener("message", async (event) => {
@@ -27,7 +27,7 @@ window.addEventListener("message", async (event) => {
 
   setTimeout(() => {
     printResult(result);
-  }, 150);
+  }, 50);
 });
 
 async function sendToServer(datatosearch) {
