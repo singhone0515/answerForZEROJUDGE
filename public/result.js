@@ -43,29 +43,47 @@ async function sendToServer(datatosearch) {
   localStorage.setItem("searchResult", JSON.stringify(result));
 }
 
+
+let idAsc = true;
+let diffAsc = true;
+let nameAsc = true;
+let categoryAsc = true;
+
 function idsortResult(Result) {
   Result.sort((a, b) => {
     const letterA = a.id[0];
     const letterB = b.id[0];
 
     if (letterA !== letterB) {
-      return letterA.localeCompare(letterB); // 先照字母排
+      return idAsc ?
+        letterA.localeCompare(letterB) :
+        letterB.localeCompare(letterA);
     }
 
     // 字母相同 → 排數字
     const numA = Number(a.id.slice(1));
     const numB = Number(b.id.slice(1));
-    return numA - numB;
+    return idAsc ? (numA - numB) : (numB - numA);
   });
+  idAsc = !idAsc;
 }
 
 function diffsortResult(Result) {
-  Result.sort((a, b) => a.difficulty-b.difficulty);
+  Result.sort((a, b) =>
+    diffAsc ? (a.difficulty - b.difficulty) : (b.difficulty - a.difficulty)
+  );
+
+  diffAsc = !diffAsc;
 }
 
 function namesortResult(Result) {
-  Result.sort((a, b) => a.name.localeCompare(b.name));
+  Result.sort((a, b) =>
+    nameAsc ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name)
+  );
+
+  nameAsc = !nameAsc;
 }
+
 function categorysortResult(Result) {
   Result.sort((a, b) => {
     const A = a.category;
@@ -74,13 +92,15 @@ function categorysortResult(Result) {
 
     for (let i = 0; i < len; i++) {
       const cmp = A[i].localeCompare(B[i]);
-      if (cmp !== 0) return cmp;   // 第 i 個分類不同 → 直接決定排序
+      if (cmp !== 0) return categoryAsc ? cmp : -cmp;
     }
-
-    // 前面都一樣 → 短的排前面
-    return A.length - B.length;
+    return categoryAsc ? (A.length - B.length) : (B.length - A.length);
   });
+
+  // 排完以後反轉旗標
+  categoryAsc = !categoryAsc;
 }
+
 
 
 function printResult(Result) {
