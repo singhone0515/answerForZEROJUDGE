@@ -62,7 +62,7 @@ function idsortResult(Result) {
 }
 
 function diffsortResult(Result) {
-  Result.sort((a, b) => a.difficulty-b.difficult);
+  Result.sort((a, b) => a.difficulty-b.difficulty);
 }
 
 function printResult(Result) {
