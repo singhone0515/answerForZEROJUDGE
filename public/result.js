@@ -66,6 +66,22 @@ function diffsortResult(Result) {
 function namesortResult(Result) {
   Result.sort((a, b) => a.name.localeCompare(b.name));
 }
+function categorysortResult(Result) {
+  Result.sort((a, b) => {
+    const A = a.category;
+    const B = b.category;
+    const len = Math.min(A.length, B.length);
+
+    for (let i = 0; i < len; i++) {
+      const cmp = A[i].localeCompare(B[i]);
+      if (cmp !== 0) return cmp;   // 第 i 個分類不同 → 直接決定排序
+    }
+
+    // 前面都一樣 → 短的排前面
+    return A.length - B.length;
+  });
+}
+
 
 function printResult(Result) {
   const tags = document.querySelector(".resultblock");
@@ -80,7 +96,7 @@ function printResult(Result) {
                 <th class="idSort">編號</th>
                 <th class="nameSort">名稱</th>
                 <th class="diffSort">難度</th>
-                <th>類型</th>
+                <th class="cateSort">類型</th>
                 <th>題目</th>
                 <th>題解</th>
             </tr>
@@ -133,6 +149,11 @@ document.addEventListener("click", (e) => {
   if (e.target.classList.contains("nameSort")) {    
     const savedResult = JSON.parse(localStorage.getItem("searchResult"));
     namesortResult(savedResult);
+    printResult(savedResult);
+  }
+  if (e.target.classList.contains("cateSort")) {    
+    const savedResult = JSON.parse(localStorage.getItem("searchResult"));
+    categorysortResult(savedResult);
     printResult(savedResult);
   }
 });

@@ -125,8 +125,10 @@ hr {
 
 .resultTable th.idSort:hover,
 .resultTable th.nameSort:hover,
+.resultTable th.cateSort:hover,
 .resultTable th.diffSort:hover {
-  background-color: #fcfcb8;
+  background-color: #fdfdc8;
+  transition: 0.05s ease;
 }
 
 .resultTable tr .content {
