@@ -7,8 +7,6 @@ window.addEventListener("DOMContentLoaded", () => {
   if (savedResult===null) return;
 
   console.log("共 ", savedResult.length ," 筆");
-  
-  idsortResult(savedResult);
 
   setTimeout(() => {
     printResult(savedResult);
@@ -65,6 +63,10 @@ function diffsortResult(Result) {
   Result.sort((a, b) => a.difficulty-b.difficulty);
 }
 
+function namesortResult(Result) {
+  Result.sort((a, b) => a.name.localeCompare(b.name));
+}
+
 function printResult(Result) {
   const tags = document.querySelector(".resultblock");
   if (Result.length === 0) {
@@ -76,7 +78,7 @@ function printResult(Result) {
         <table class="resultTable">
             <tr>
                 <th class="idSort">編號</th>
-                <th>名稱</th>
+                <th class="nameSort">名稱</th>
                 <th class="diffSort">難度</th>
                 <th>類型</th>
                 <th>題目</th>
@@ -126,6 +128,11 @@ document.addEventListener("click", (e) => {
   if (e.target.classList.contains("diffSort")) {    
     const savedResult = JSON.parse(localStorage.getItem("searchResult"));
     diffsortResult(savedResult);
+    printResult(savedResult);
+  }
+  if (e.target.classList.contains("nameSort")) {    
+    const savedResult = JSON.parse(localStorage.getItem("searchResult"));
+    namesortResult(savedResult);
     printResult(savedResult);
   }
 });

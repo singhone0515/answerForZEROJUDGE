@@ -123,6 +123,12 @@ hr {
   text-align: center;
 }
 
+.resultTable th.idSort:hover,
+.resultTable th.nameSort:hover,
+.resultTable th.diffSort:hover {
+  background-color: #fcfcb8;
+}
+
 .resultTable tr .content {
   transform-origin: center;
   transition: 0.05s ease;
