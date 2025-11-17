@@ -8,6 +8,8 @@ window.addEventListener("DOMContentLoaded", () => {
 
   console.log("共 ", savedResult.length ," 筆");
   
+  idsortResult(savedResult);
+
   setTimeout(() => {
     printResult(savedResult);
   }, 50);
@@ -20,7 +22,7 @@ window.addEventListener("message", async (event) => {
   datatosearch = event.data;
   await sendToServer(datatosearch);
   
-  sortResult();
+  idsortResult(result);
 
   console.log("搜尋結果：", result);
   console.log("共 ", result.length ," 筆");
@@ -43,8 +45,8 @@ async function sendToServer(datatosearch) {
   localStorage.setItem("searchResult", JSON.stringify(result));
 }
 
-function sortResult() {
-  result.sort((a, b) => {
+function idsortResult(Result) {
+  Result.sort((a, b) => {
     const letterA = a.id[0];
     const letterB = b.id[0];
 
@@ -59,6 +61,10 @@ function sortResult() {
   });
 }
 
+function diffsortResult(Result) {
+  Result.sort((a, b) => a.difficulty-b.difficult);
+}
+
 function printResult(Result) {
   const tags = document.querySelector(".resultblock");
   if (Result.length === 0) {
@@ -69,9 +75,9 @@ function printResult(Result) {
   tags.innerHTML = `
         <table class="resultTable">
             <tr>
-                <th>編號</th>
+                <th class="idSort">編號</th>
                 <th>名稱</th>
-                <th>難度</th>
+                <th class="diffSort">難度</th>
                 <th>類型</th>
                 <th>題目</th>
                 <th>題解</th>
@@ -111,6 +117,14 @@ document.addEventListener("click", (e) => {
   }
   if (e.target.classList.contains("cencel")) {
     back();
+  }
+  if (e.target.classList.contains("idSort")) {
+    idsortResult(savedResult);
+    printResult(savedResult);
+  }
+  if (e.target.classList.contains("diffSort")) {
+    diffsortResult(savedResult);
+    printResult(savedResult);
   }
 });
 
