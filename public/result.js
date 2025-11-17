@@ -119,10 +119,12 @@ document.addEventListener("click", (e) => {
     back();
   }
   if (e.target.classList.contains("idSort")) {
+    const savedResult = JSON.parse(localStorage.getItem("searchResult"));
     idsortResult(savedResult);
     printResult(savedResult);
   }
-  if (e.target.classList.contains("diffSort")) {
+  if (e.target.classList.contains("diffSort")) {    
+    const savedResult = JSON.parse(localStorage.getItem("searchResult"));
     diffsortResult(savedResult);
     printResult(savedResult);
   }
