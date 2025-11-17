@@ -75,9 +75,6 @@ h1 {
 }
 
 .detailblock .SOL {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
   font-size: 24px;
   display: flex;
   flex-direction: column;
@@ -91,6 +88,13 @@ h1 {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   gap: 10px;
 }
+
+.detailblock .SOL pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
 .detailblock pre {
   font-size: 20px;
   display: flex;
