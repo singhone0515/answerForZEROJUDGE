@@ -6,7 +6,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   console.log("查詢結果：", detail);
   setTimeout(() => {
     printDetail(detail);
-  }, 150);
+  }, 20);
 });
 
 async function getdetail() {
