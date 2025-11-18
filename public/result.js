@@ -84,13 +84,13 @@ function namesortResult(Result) {
   nameAsc = !nameAsc;
 }
 
-function categorysortResult(Result) {
-  const cateTable = JSON.parse(localStorage.getItem("cateResult"));
+const cateTable = Array.from(JSON.parse(localStorage.getItem("cateResult"))).map((box) => box.value);
 
-  const ID_MAP = {};
-  cateTable.forEach(c => {
-    ID_MAP[c.category] = Number(c.id);
-  });
+const ID_MAP = {};
+cateTable.forEach(c => {
+  ID_MAP[c.category] = Number(c.id);
+});
+function categorysortResult(Result) {
 
   // 照 id 做 tuple-like 排序
   Result.sort((a, b) => {
