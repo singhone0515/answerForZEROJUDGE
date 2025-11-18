@@ -85,23 +85,34 @@ function namesortResult(Result) {
 }
 
 function categorysortResult(Result) {
+  const cateTable = JSON.parse(localStorage.getItem("cateResult"));
+
+  const ID_MAP = {};
+  cateTable.forEach(c => {
+    ID_MAP[c.category] = Number(c.id);
+  });
+
+  // 照 id 做 tuple-like 排序
   Result.sort((a, b) => {
-    const A = a.category;
+    const A = a.category; // A 是字串陣列
     const B = b.category;
+
     const len = Math.min(A.length, B.length);
 
     for (let i = 0; i < len; i++) {
-      const cmp = A[i].localeCompare(B[i]);
-      if (cmp !== 0) return categoryAsc ? cmp : -cmp;
+      const Ai = ID_MAP[A[i]] ?? 9999; // 沒找到的放後面
+      const Bi = ID_MAP[B[i]] ?? 9999;
+
+      if (Ai !== Bi) {
+        return categoryAsc ? Ai - Bi : Bi - Ai;
+      }
     }
+
     return categoryAsc ? (A.length - B.length) : (B.length - A.length);
   });
 
-  // 排完以後反轉旗標
   categoryAsc = !categoryAsc;
 }
-
-
 
 function printResult(Result) {
   const tags = document.querySelector(".resultblock");

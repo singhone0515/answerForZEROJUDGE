@@ -4,6 +4,8 @@ window.addEventListener("DOMContentLoaded", async () => {
   const categories = await res.json();
 
   categories.sort((a, b) => Number(a.id) - Number(b.id));
+  
+  localStorage.setItem("cateResult", JSON.stringify(categories));
 
   categoryList.innerHTML = "";
   categories.forEach((cate) => {
