@@ -84,7 +84,7 @@ function namesortResult(Result) {
   nameAsc = !nameAsc;
 }
 
-const cateTable = Array.from(JSON.parse(localStorage.getItem("cateResult"))).map((box) => box.value);
+const cateTable = JSON.parse(localStorage.getItem("cateResult"));
 
 const ID_MAP = {};
 cateTable.forEach(c => {
