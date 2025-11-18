@@ -43,6 +43,7 @@ function printDetail(detail) {
 
   const tags = document.querySelector(".detailblock .SOL");
   const presol = document.createElement("pre");
+  presol.classList.add("sol");
   presol.textContent = detail.solutionNote;
   tags.appendChild(presol);
 }
@@ -52,6 +53,21 @@ document.addEventListener(
   (e) => {
     if (e.ctrlKey) {
       const target = e.target.closest("code");
+      if (target) {
+        e.preventDefault();
+
+        const style = window.getComputedStyle(target);
+        const currentSize = parseFloat(style.fontSize);
+
+        const delta = e.deltaY < 0 ? 1.02 : 0.98;
+        const newSize = Math.min(Math.max(currentSize * delta, 8), 40);
+
+        target.style.fontSize = newSize + "px";
+      }
+    }
+
+    if (e.ctrlKey) {
+      const target = e.target.closest(".sol");
       if (target) {
         e.preventDefault();
 

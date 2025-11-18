@@ -89,12 +89,6 @@ h1 {
   gap: 10px;
 }
 
-.detailblock .SOL pre {
-  white-space: pre-wrap;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-} 
-
 .detailblock pre {
   font-size: 20px;
   display: flex;
@@ -130,6 +124,35 @@ code::-webkit-scrollbar-thumb {
 code::-webkit-scrollbar-thumb:hover {
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+.sol {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+} 
+
+/*
+.sol {
+  overflow-x: auto;
+}
+
+.sol::-webkit-scrollbar {
+  height: 10px;
+}
+
+.sol::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sol::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+}
+
+.sol::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}  
+*/
 
 .footer {
   width: 100%;
