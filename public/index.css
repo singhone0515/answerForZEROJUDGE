@@ -43,6 +43,7 @@ h6 {
   text-align: center;
   min-height: 100px;
   max-height: 130px;
+  width: 1000px;
   margin-top: 60px;
   padding: 20px;
   background-color: rgb(213, 242, 255);
@@ -62,6 +63,7 @@ h6 {
   flex-direction: column;
   text-align: center;
   min-height: 500px;
+  width: 1000px;
   padding: 20px;
   background-color: rgb(213, 242, 255);
   border-radius: 30px;
