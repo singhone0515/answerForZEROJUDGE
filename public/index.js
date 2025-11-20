@@ -386,7 +386,7 @@ function checkTagState() {
 }
 
 document.addEventListener("mousedown", (e) => {
-  if (e.target.closest(".footer")) return;
+  if (e.target.closest("footer")) return;
   window.getSelection()?.removeAllRanges();
 });
 
